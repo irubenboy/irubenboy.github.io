@@ -1,0 +1,19 @@
+.nav-container{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: red;
+    align-items: center;
+    width: auto;
+    height: 80vh;
+}
+
+.nav-container .element-nav{
+    width: 50px;
+    height: 50px;
+    background-color:beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
