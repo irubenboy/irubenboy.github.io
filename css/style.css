@@ -8,3 +8,17 @@ body,html{
     height: 100%;
     font-family: Poppins-Regular, sans-serif;
 }
+
+
+.cross-center {
+    /* Centramos verticalmente el ícono con el texto */
+    display     : flex;
+    align-items : center;
+}
+
+.svg-icon {
+    /* Le asignamos un tamaño y un margen al ícono */
+    width        : 1rem;
+    height       : 1rem;
+    fill         : currentColor; /* currentColor actua como una variable tomando el valor que tenga el color de texto del padre del elemento. Si estás utilizando vectores que poseen distintos rellenos, omite esta línea de código*/
+}
