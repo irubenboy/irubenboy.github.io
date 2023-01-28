@@ -1,0 +1,63 @@
+:root {
+    --md-primary-fg-color: #5FC9F8;
+    --md-primary-fg-color-transparency: #5FC9F850;
+    --md-primary-fg-color--light: #5FC9F8;
+    --md-primary-fg-color--dark: #04599C;
+    --md-admonition-icon--important: url('data: image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4h2v11h-2V4Zm2 14v2h-2v-2h2Z" /></svg>');
+
+}
+
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #04599C;
+    --md-primary-fg-color-transparency: #04599C50;
+    --md-admonition-icon--important: url('data: image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4h2v11h-2V4Zm2 14v2h-2v-2h2Z" /></svg>');
+
+}
+
+.md-typeset h1,
+h2,
+strong {
+    color: var(--md-primary-fg-color);
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+    font-weight: 500;
+}
+
+
+.md-typeset__scrollwrap {
+    display: flex;
+    justify-content: center;
+}
+
+.md-typeset__table table:not([class]) {
+    border-collapse: collapse;
+}
+
+.md-typeset__table table:not([class]),
+.md-typeset__table table:not([class]) td,
+.md-typeset__table table:not([class]) th {
+    border: .05rem solid var(--md-typeset-table-color);
+}
+
+.md-typeset .danger>.admonition-title {
+    color: #ff1744;
+}
+
+.md-typeset .admonition.important,
+.md-typeset details.important {
+    border-color: rgb(149, 155, 43);
+}
+
+.md-typeset .important>.admonition-title,
+.md-typeset .important>summary {
+    background-color: rgba(241, 246, 110, 0.1);
+}
+
+.md-typeset .important>.admonition-title::before,
+.md-typeset .important>summary::before {
+    background-color: rgb(241, 246, 110);
+    -webkit-mask-image: var(--md-admonition-icon--important);
+    mask-image: var(--md-admonition-icon--important);
+}
