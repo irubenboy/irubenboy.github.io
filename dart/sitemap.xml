@@ -1,43 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/bloque_i/tema_1/pages-1/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/bloque_i/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/bloque_i/tema_1/pages-2/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_1/pages-1/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/bloque_i/tema_1/pages-3/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_1/pages-2/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/bloque_i/tema_1/pages-4/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_1/pages-3/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/bloque_i/tema_1/pages-5/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_1/pages-4/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/bloque_i/tema_1/pages-6/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_1/pages-5/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://squidfunk.github.io/mkdocs-material/bloque_i/tema_1/pages-7/</loc>
-         <lastmod>2023-01-28</lastmod>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_1/pages-6/</loc>
+         <lastmod>2023-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_1/pages-7/</loc>
+         <lastmod>2023-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_2/pages-1/</loc>
+         <lastmod>2023-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_2/pages-2/</loc>
+         <lastmod>2023-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://irubenboy.github.io/java/bloque_i/tema_2/pages-3/</loc>
+         <lastmod>2023-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
