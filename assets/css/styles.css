@@ -10,22 +10,18 @@
     margin: 24px 0;
     font-size: 4em;
 }
+
 .cards-container{
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly; */
-    position: relative;
+    width: 100%;
 }
 
 .card-container{
     max-width: 400px;
     width: 25%;
     height: 250px;
-    border: 1px solid grey;
     margin: 8px 16px;
-    position: relative;
-    float: left;
     border-radius: 15px;
+    position: relative;
 }
 
 .card-image{
@@ -35,7 +31,6 @@
     margin: 10px;
     width: 45%;
 }
-
 
 .card-title{
     bottom: 0;
