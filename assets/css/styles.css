@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title{
+    text-align: center;
+    color: aquamarine;
+    margin: 24px 0;
+    font-size: 4em;
+}
+.cards-container{
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; */
+    position: relative;
+}
+
+.card-container{
+    max-width: 400px;
+    width: 25%;
+    height: 250px;
+    border: 1px solid grey;
+    margin: 8px 16px;
+    position: relative;
+    float: left;
+    border-radius: 15px;
+}
+
+.card-image{
+    position: absolute;
+    max-width: 100px;
+    top: 0px;
+    margin: 10px;
+    width: 45%;
+}
+
+
+.card-title{
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    color: white;
+    font-size: 3rem;
+}
+
+#html{
+    background-color: #f07654;
+}
+
+#css{
+    background-color: #4c98c4;
+}
+
+#javascript{
+    background-color: #f9d856;
+}
+
+#javascript img{
+    border-radius: 15px;
+}
+
+#php{
+    background-color: #7276AA;
+}
+
+#java{
+    background-color: #d55c3e;
+}
+
+#sql{
+    background-color: grey;
+}
+
+#dart{
+    background-color: #526cfe;
+}
+
+#nodejs{
+    background-color: #3DA331;
+}
