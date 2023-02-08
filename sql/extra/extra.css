@@ -1,18 +1,17 @@
-
 :root {
-    --md-primary-fg-color: #EC2025;
-    --md-primary-fg-color-transparency: #EC202550;
-    --md-primary-fg-color--light: #EC2025;
-    --md-primary-fg-color--dark: #7b0a0d;
+    --md-primary-fg-color: #949494;
+    --md-primary-fg-color-transparency: #94949450;
+    --md-primary-fg-color--light: #949494;
+    --md-primary-fg-color--dark: #000;
     --md-admonition-icon--important: url('data: image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4h2v11h-2V4Zm2 14v2h-2v-2h2Z" /></svg>');
-    --md-accent-fg-color: #F16266;
+    --md-accent-fg-color: #646464;
 }
 
 [data-md-color-scheme="slate"] {
-    --md-primary-fg-color: #7b0a0d;
-    --md-primary-fg-color-transparency: #7b0a0d50;
+    --md-primary-fg-color: #000;
+    --md-primary-fg-color-transparency: #00000050;
     --md-admonition-icon--important: url('data: image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4h2v11h-2V4Zm2 14v2h-2v-2h2Z" /></svg>');
-    --md-accent-fg-color: #A25355;
+    --md-accent-fg-color: #1e1e1e;
 }
 
 .md-typeset h1,
@@ -63,6 +62,7 @@ strong {
     mask-image: var(--md-admonition-icon--important);
 }
 
-.md-nav__link:focus, .md-nav__link:hover {
+.md-nav__link:focus,
+.md-nav__link:hover {
     color: var(--md-accent-fg-color);
 }
