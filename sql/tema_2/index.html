@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang=en class=no-js>
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name=description content="A page with notes about Java">
+    <meta name=author content=irubenboy>
+    <link href=https://irubenboy.github.io/sql/tema_2/ rel=canonical>
+    <link href=../tema_1/ rel=prev>
+    <link rel=icon href=../assets/images/favicon.png>
+    <meta name=generator content="mkdocs-1.4.2, mkdocs-material-9.0.8">
+    <title>Tema 2 - SQL</title>
+    <link rel=stylesheet href=../assets/stylesheets/main.0d440cfe.min.css>
+    <link rel=stylesheet href=../assets/stylesheets/palette.2505c338.min.css>
+    <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+    <link rel=stylesheet
+        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+    <style>
+        :root {
+            --md-text-font: "Roboto";
+            --md-code-font: "Roboto Mono"
+        }
+    </style>
+    <link rel=stylesheet href=../extra/extra.css>
+    <script>__md_scope = new URL("..", location), __md_hash = e => [...e].reduce((e, _) => (e << 5) - e + _.charCodeAt(0), 0), __md_get = (e, _ = localStorage, t = __md_scope) => JSON.parse(_.getItem(t.pathname + "." + e)), __md_set = (e, _, t = localStorage, a = __md_scope) => { try { t.setItem(a.pathname + "." + e, JSON.stringify(_)) } catch (e) { } }</script>
+    <script>"undefined" != typeof __md_analytics && __md_analytics()</script>
+</head>
+
+<body dir=ltr data-md-color-scheme=default data-md-color-primary data-md-color-accent>
+    <script>var palette = __md_get("__palette"); if (palette && "object" == typeof palette.color) for (var key of Object.keys(palette.color)) document.body.setAttribute("data-md-color-" + key, palette.color[key])</script>
+    <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle
+        data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label>
+    <div data-md-component=skip> <a href=#tema-2-diseno-de-modelos-logicos-normalizados class=md-skip> Skip to content
+        </a> </div>
+    <div data-md-component=announce> </div>
+    <header class=md-header data-md-component=header>
+        <nav class="md-header__inner md-grid" aria-label=Header> <a href=.. title=SQL class="md-header__button md-logo"
+                aria-label=SQL data-md-component=logo> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89">
+                    <path d=M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z />
+                    <path d=M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z
+                        style="fill-opacity: 0.5" />
+                    <path d=M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z />
+                    <path d=M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z style="fill-opacity: 0.25" />
+                </svg> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg
+                    viewbox="0 0 24 24">
+                    <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z" />
+                </svg> </label>
+            <div class=md-header__title data-md-component=header-title>
+                <div class=md-header__ellipsis>
+                    <div class=md-header__topic> <span class=md-ellipsis> SQL </span> </div>
+                    <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> Tema 2 </span>
+                    </div>
+                </div>
+            </div>
+            <form class=md-header__option data-md-component=palette> <input class=md-option data-md-color-media
+                    data-md-color-scheme=default data-md-color-primary data-md-color-accent
+                    aria-label="Switch to dark mode" type=radio name=__palette id=__palette_1> <label
+                    class="md-header__button md-icon" title="Switch to dark mode" for=__palette_2 hidden> <svg
+                        xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+                        <path
+                            d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z" />
+                    </svg> </label> <input class=md-option data-md-color-media data-md-color-scheme=slate
+                    data-md-color-primary data-md-color-accent aria-label="Switch to light mode" type=radio
+                    name=__palette id=__palette_2> <label class="md-header__button md-icon" title="Switch to light mode"
+                    for=__palette_1 hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+                        <path
+                            d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z" />
+                    </svg> </label> </form> <label class="md-header__button md-icon" for=__search> <svg
+                    xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+                    <path
+                        d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z" />
+                </svg> </label>
+            <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay
+                    for=__search></label>
+                <div class=md-search__inner role=search>
+                    <form class=md-search__form name=search> <input type=text class=md-search__input name=query
+                            aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off
+                            spellcheck=false data-md-component=search-query required> <label
+                            class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg
+                                viewbox="0 0 24 24">
+                                <path
+                                    d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z" />
+                            </svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+                                <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z" />
+                            </svg> </label>
+                        <nav class=md-search__options aria-label=Search> <a href=javascript:void(0)
+                                class="md-search__icon md-icon" title=Share aria-label=Share data-clipboard
+                                data-clipboard-text data-md-component=search-share tabindex=-1> <svg
+                                    xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+                                    <path
+                                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z" />
+                                </svg> </a> <button type=reset class="md-search__icon md-icon" title=Clear
+                                aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+                                    <path
+                                        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z" />
+                                </svg> </button> </nav>
+                        <div class=md-search__suggest data-md-component=search-suggest></div>
+                    </form>
+                    <div class=md-search__output>
+                        <div class=md-search__scrollwrap data-md-scrollfix>
+                            <div class=md-search-result data-md-component=search-result>
+                                <div class=md-search-result__meta> Initializing search </div>
+                                <ol class=md-search-result__list role=presentation></ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=md-header__source> <a href=https://github.com/irubenboy/sql title="Go to repository"
+                    class=md-source data-md-component=source>
+                    <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg
+                            viewbox="0 0 448 512"><!-- Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                            <path
+                                d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z" />
+                        </svg> </div>
+                    <div class=md-source__repository> irubenboy/sql </div>
+                </a> </div>
+        </nav>
+    </header>
+    <div class=md-container data-md-component=container>
+        <nav class=md-tabs aria-label=Tabs data-md-component=tabs>
+            <div class="md-tabs__inner md-grid">
+                <ul class=md-tabs__list>
+                    <li class=md-tabs__item> <a href=.. class=md-tabs__link> Home </a> </li>
+                    <li class=md-tabs__item> <a href=../tema_1/ class=md-tabs__link> Tema 1 </a> </li>
+                    <li class=md-tabs__item> <a href=./ class="md-tabs__link md-tabs__link--active"> Tema 2 </a> </li>
+                </ul>
+            </div>
+        </nav>
+        <main class=md-main data-md-component=main>
+            <div class="md-main__inner md-grid">
+                <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation>
+                    <div class=md-sidebar__scrollwrap>
+                        <div class=md-sidebar__inner>
+                            <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label=Navigation
+                                data-md-level=0> <label class=md-nav__title for=__drawer> <a href=.. title=SQL
+                                        class="md-nav__button md-logo" aria-label=SQL data-md-component=logo> <svg
+                                            xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89">
+                                            <path d=M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z />
+                                            <path d=M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z
+                                                style="fill-opacity: 0.5" />
+                                            <path
+                                                d=M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z />
+                                            <path d=M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z
+                                                style="fill-opacity: 0.25" />
+                                        </svg> </a> SQL </label>
+                                <div class=md-nav__source> <a href=https://github.com/irubenboy/sql
+                                        title="Go to repository" class=md-source data-md-component=source>
+                                        <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg
+                                                viewbox="0 0 448 512"><!-- Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                                <path
+                                                    d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z" />
+                                            </svg> </div>
+                                        <div class=md-source__repository> irubenboy/sql </div>
+                                    </a> </div>
+                                <ul class=md-nav__list data-md-scrollfix>
+                                    <li class=md-nav__item> <a href=.. class=md-nav__link> Home </a> </li>
+                                    <li class=md-nav__item> <a href=../tema_1/ class=md-nav__link> Tema 1 </a> </li>
+                                    <li class="md-nav__item md-nav__item--active"> <input
+                                            class="md-nav__toggle md-toggle" type=checkbox id=__toc> <label
+                                            class="md-nav__link md-nav__link--active" for=__toc> Tema 2 <span
+                                                class="md-nav__icon md-icon"></span> </label> <a href=./
+                                            class="md-nav__link md-nav__link--active"> Tema 2 </a>
+                                        <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label
+                                                class=md-nav__title for=__toc> <span
+                                                    class="md-nav__icon md-icon"></span> Table of contents </label>
+                                            <ul class=md-nav__list data-md-component=toc data-md-scrollfix>
+                                                <li class=md-nav__item> <a href=#1-introduccion class=md-nav__link> 1
+                                                        Introducción </a> </li>
+                                                <li class=md-nav__item> <a href=#2-diseno-de-una-base-de-datos
+                                                        class=md-nav__link> 2 Diseño de una base de datos </a>
+                                                    <nav class=md-nav aria-label="2 Diseño de una base de datos">
+                                                        <ul class=md-nav__list>
+                                                            <li class=md-nav__item> <a href=#fase-de-analisis
+                                                                    class=md-nav__link> Fase de Análisis </a> </li>
+                                                            <li class=md-nav__item> <a
+                                                                    href=#fase-1-del-diseno-diseno-conceptual-modelo-entidadrelacion-er
+                                                                    class=md-nav__link> Fase 1 del diseño. Diseño
+                                                                    conceptual: Modelo Entidad/Relación (E/R) </a> </li>
+                                                            <li class=md-nav__item> <a
+                                                                    href=#fase-2-del-diseno-diseno-logico-modelo-relacional
+                                                                    class=md-nav__link> Fase 2 del diseño. Diseño
+                                                                    Lógico: Modelo Relacional </a> </li>
+                                                            <li class=md-nav__item> <a
+                                                                    href=#fase-3-del-diseno-diseno-fisico-modelo-fisico
+                                                                    class=md-nav__link> Fase 3 del diseño. Diseño
+                                                                    físico: Modelo Físico </a> </li>
+                                                        </ul>
+                                                    </nav>
+                                                </li>
+                                                <li class=md-nav__item> <a href=#3-modelo-entidad-relacion
+                                                        class=md-nav__link> 3 Modelo Entidad Relación </a>
+                                                    <nav class=md-nav aria-label="3 Modelo Entidad Relación">
+                                                        <ul class=md-nav__list>
+                                                            <li class=md-nav__item> <a href=#entidades
+                                                                    class=md-nav__link> Entidades </a> </li>
+                                                            <li class=md-nav__item> <a href=#atributos
+                                                                    class=md-nav__link> Atributos </a>
+                                                                <nav class=md-nav aria-label=Atributos>
+                                                                    <ul class=md-nav__list>
+                                                                        <li class=md-nav__item> <a
+                                                                                href=#tipos-de-atributos
+                                                                                class=md-nav__link> Tipos de atributos
+                                                                            </a> </li>
+                                                                    </ul>
+                                                                </nav>
+                                                            </li>
+                                                            <li class=md-nav__item> <a href=#relaciones
+                                                                    class=md-nav__link> Relaciones </a>
+                                                                <nav class=md-nav aria-label=Relaciones>
+                                                                    <ul class=md-nav__list>
+                                                                        <li class=md-nav__item> <a
+                                                                                href=#rol-de-una-entidad-en-una-relacion
+                                                                                class=md-nav__link> Rol de una entidad
+                                                                                en una relación </a> </li>
+                                                                        <li class=md-nav__item> <a
+                                                                                href=#cardinalidad-de-una-relacion
+                                                                                class=md-nav__link> Cardinalidad de una
+                                                                                relación </a>
+                                                                            <nav class=md-nav
+                                                                                aria-label="Cardinalidad de una relación">
+                                                                                <ul class=md-nav__list>
+                                                                                    <li class=md-nav__item> <a
+                                                                                            href=#relacion-uno-a-uno-11
+                                                                                            class=md-nav__link> Relación
+                                                                                            uno a uno 1:1 </a> </li>
+                                                                                    <li class=md-nav__item> <a
+                                                                                            href=#relacion-uno-a-muchos-1n
+                                                                                            class=md-nav__link> Relación
+                                                                                            uno a muchos 1:N </a>
+                                                                                        <nav class=md-nav
+                                                                                            aria-label="Relación uno a muchos 1:N">
+                                                                                            <ul class=md-nav__list>
+                                                                                                <li class=md-nav__item>
+                                                                                                    <a href=#muchos-a-muchos-nm
+                                                                                                        class=md-nav__link>
+                                                                                                        Muchos a muchos
+                                                                                                        N:M </a> </li>
+                                                                                            </ul>
+                                                                                        </nav>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </nav>
+                                                                        </li>
+                                                                        <li class=md-nav__item> <a
+                                                                                href=#la-participacion-de-una-entidad
+                                                                                class=md-nav__link> La Participación de
+                                                                                una entidad </a> </li>
+                                                                        <li class=md-nav__item> <a
+                                                                                href=#atributos-propios-de-una-relacion
+                                                                                class=md-nav__link> Atributos propios de
+                                                                                una relación </a> </li>
+                                                                        <li class=md-nav__item> <a
+                                                                                href=#relaciones-de-dependencia-entidades-fuertes-y-entidades-debiles
+                                                                                class=md-nav__link> Relaciones de
+                                                                                dependencia: Entidades Fuertes y
+                                                                                Entidades Débiles </a> </li>
+                                                                        <li class=md-nav__item> <a
+                                                                                href=#simbolos-de-exclusividad-o-inclusividad-entre-relaciones
+                                                                                class=md-nav__link> Símbolos de
+                                                                                exclusividad o inclusividad entre
+                                                                                relaciones </a> </li>
+                                                                    </ul>
+                                                                </nav>
+                                                            </li>
+                                                        </ul>
+                                                    </nav>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class=md-content data-md-component=content>
+                    <article class="md-content__inner md-typeset">
+                        <h1 id=tema-2-diseno-de-modelos-logicos-normalizados>Tema 2. Diseño de modelos lógicos
+                            normalizados<a class=headerlink href=#tema-2-diseno-de-modelos-logicos-normalizados
+                                title="Permanent link">&para;</a></h1>
+                        <h2 id=1-introduccion>1 Introducción<a class=headerlink href=#1-introduccion
+                                title="Permanent link">&para;</a></h2>
+                        <p>En este tema veremos como hacer el diseño conceptual y lógico de una base de datos.
+                            Empezaremos elaborando el modelo conceptual usando diagramas Entidad-Relación y
+                            Entidad-Relación extendidos. Este diseño es de más alto nivel, más próximo al usuario y más
+                            alejado del diseño físico de la BD. A continuación, a partir del modelo Entidad-Relación,
+                            procederemos a generar el modelo relacional, el cual ya se halla muy próximo al modelo
+                            físico de BD. Veremos las reglas de transformación que hemos de seguir para ello. Por último
+                            deberemos normalizar las tablas obtenidas para evitar redundancias. Resumiendo, los 2
+                            modelos lógicos, de mayor a menor nivel de abstracción, que veremos en este tema son:</p>
+                        <ul>
+                            <li><strong>Modelo Entidad-Relación (extendido)</strong></li>
+                            <li><strong>Modelo Relacional</strong></li>
+                        </ul>
+                        <p>En el siguiente tema, realizaremos el diseño físico de la BD a partir del modelo relacional.
+                        </p>
+                        <h2 id=2-diseno-de-una-base-de-datos>2 Diseño de una base de datos<a class=headerlink
+                                href=#2-diseno-de-una-base-de-datos title="Permanent link">&para;</a></h2>
+                        <p>El diseño de una base de datos consiste en extraer todos los datos relevantes de un problema,
+                            por ejemplo, saber que datos están implicados en el proceso de facturación de una empresa
+                            que vende artículos de informática, o, que datos son necesarios para llevar el control de
+                            pruebas diagnósticas en un centro de radiológico. Para extraer estos datos, se debe realizar
+                            un análisis en profundidad del problema, para averiguar qué datos son esenciales para la
+                            base de datos y descartar los que no sean necesarios. Una vez extraídos los datos esenciales
+                            comenzamos a construir los modelos adecuados. Es decir, construimos, mediante una
+                            herramienta de diseño de base de datos, un esquema que exprese con total exactitud todos los
+                            datos que el problema requiere almacenar. Ya dijimos en el tema anterior, que es algo
+                            equivalente al dibujo de un plano previo a la construcción de un edificio. También
+                            introdujimos en el tema 1, las distintas fases por las que atraviesa el proceso de diseño de
+                            una Base de Datos. Además, previo al diseño es necesario realizar una primera fase
+                            denominada de análisis.</p>
+                        <h3 id=fase-de-analisis>Fase de Análisis<a class=headerlink href=#fase-de-analisis
+                                title="Permanent link">&para;</a></h3>
+                        <p>Antes de pasar a diseñar una BD hay que tener claro que es lo que queremos hacer. Para ello,
+                            típicamente los informáticos se reúnen con los futuros usuarios del sistema para recopilar
+                            la información que necesitan para saber que desean dichos usuarios. Normalmente se hace una
+                            reunión inicial a y partir de ella se elabora una batería de preguntas para entrevistar a
+                            los usuarios finales en una segunda reunión y obtener de ella una información detallada de
+                            lo que se espera de nuestra BD. De estas entrevistas, se extrae el documento más importante
+                            del análisis, el documento de Especificación de Requisitos Software o E.R.S. A partir de
+                            dicha E.R.S. Se extrae toda la información necesaria para la modelización de datos.</p>
+                        <h3 id=fase-1-del-diseno-diseno-conceptual-modelo-entidadrelacion-er>Fase 1 del diseño. Diseño
+                            conceptual: Modelo Entidad/Relación (E/R)<a class=headerlink
+                                href=#fase-1-del-diseno-diseno-conceptual-modelo-entidadrelacion-er
+                                title="Permanent link">&para;</a></h3>
+                        <p>Habitualmente quien realiza la modelización es un analista informático que no tiene porqué
+                            ser un experto en el problema que pretende resolver (Contabilidad, Gestión de Reservas
+                            hoteleras, medicina, economía, etc.). Es por esto que es imprescindible contar con la
+                            experiencia de un futuro usuario de la BD que conozca a fondo todos los entresijos del
+                            negocio, y que, a su vez, no tienen porqué tener ningún conocimiento de informática. El
+                            objetivo de esta fase del diseño consiste es representar la información obtenida del usuario
+                            final y concretada en el E.R.S. mediante estándares para que el resto de la comunidad
+                            informática pueda entender y comprender el modelo realizado. El modelo que se utiliza en
+                            esta primera fase del diseño tiene un gran poder expresivo para poder comunicarse con el
+                            usuario que no es experto en informática y se denomina Modelo Conceptual. El modelo
+                            conceptual que utilizaremos es el Modelo Entidad/Relación e iremos profundizando en él a lo
+                            largo de esta unidad.</p>
+                        <h3 id=fase-2-del-diseno-diseno-logico-modelo-relacional>Fase 2 del diseño. Diseño Lógico:
+                            Modelo Relacional<a class=headerlink href=#fase-2-del-diseno-diseno-logico-modelo-relacional
+                                title="Permanent link">&para;</a></h3>
+                        <p>Este modelo es más técnico que el anterior porque está orientado al personal informático y
+                            generalmente tiene traducción directa al al modelo físico que entiende el SGBD. Se obtienen
+                            a partir del modelo conceptual y dependerá de la implementación de la BD. Así, no es lo
+                            mismo implementar una base de datos jerárquica u orientada a objetos que una BD relacional.
+                            El modelo que se usará en este módulo es el Modelo Relacional.</p>
+                        <h3 id=fase-3-del-diseno-diseno-fisico-modelo-fisico>Fase 3 del diseño. Diseño físico: Modelo
+                            Físico<a class=headerlink href=#fase-3-del-diseno-diseno-fisico-modelo-fisico
+                                title="Permanent link">&para;</a></h3>
+                        <p>Es el resultado de aplicar el modelo lógico a un SGBD concreto. Generalmente está expresado
+                            en un lenguaje de programación de BBDD tipo SQL. En este módulo, transformaremos el Modelo
+                            Relacional en el modelo físico mediante el sublenguaje DDL de SQL. Esto se estudiará en el
+                            próximo tema.</p>
+                        <figure>
+                            <p><img alt="Figura 1 - Diseño físico" src=res/diseno_fisico.webp>
+                            <figcaption>Figura 1 - Diseño físico</figcaption>
+                            </p>
+                        </figure>
+                        <h2 id=3-modelo-entidad-relacion>3 Modelo Entidad Relación<a class=headerlink
+                                href=#3-modelo-entidad-relacion title="Permanent link">&para;</a></h2>
+                        <p>El modelo Entidad-Relación es el modelo más utilizado para el diseño conceptual de bases de
+                            datos. Fue introducido por Peter Chen en 1976 y se basa en la existencia de objetos a los
+                            que se les da el nombre de entidades, y asociaciones entre ellos, llamadas relaciones. Sus
+                            símbolos principales se representan en el cuadro siguiente.</p>
+                        <figure>
+                            <p><img alt="Figura 2 - Elementos del E/R" src=res/er_elementos.webp>
+                            <figcaption>Figura 2 - Elementos del E/R</figcaption>
+                            </p>
+                        </figure>
+                        <h3 id=entidades>Entidades<a class=headerlink href=#entidades title="Permanent link">&para;</a>
+                        </h3>
+                        <p>Una entidad es cualquier objeto o elemento acerca del cual se pueda almacenar información en
+                            la BD. Las entidades pueden ser concretas como una persona o abstractas como una fecha. Las
+                            entidades se representan gráficamente mediante rectángulos y su nombre aparece en el
+                            interior. Un nombre de entidad sólo puede aparecer una vez en el esquema conceptual.</p>
+                        <p><strong>Tipo de entidades</strong> Hay dos tipos de entidades: fuertes y débiles. Una entidad
+                            débil es una entidad cuya existencia depende de la existencia de otra entidad. Una entidad
+                            fuerte es una entidad que no es débil.</p>
+                        <figure>
+                            <p><img alt="Figura 3 - Entidades" src=res/entidades.webp>
+                            <figcaption>Figura 3 - Entidades</figcaption>
+                            </p>
+                        </figure>
+                        <h3 id=atributos>Atributos<a class=headerlink href=#atributos title="Permanent link">&para;</a>
+                        </h3>
+                        <p>Una entidad se caracteriza y distingue de otra por los atributos, en ocasiones llamadas
+                            propiedades o campos, que representan las características de una entidad. Los atributos de
+                            una entidad pueden tomar un conjunto de valores permitidos al que se le conoce como dominio
+                            del atributo. Dando valores a estos atributos, se obtienen las diferentes ocurrencias de una
+                            entidad.</p>
+                        <p>En esencia, existen dos tipos de atributos:</p>
+                        <ul>
+                            <li>Identificadores de entidad (también llamados clave primaria o clave principal): son
+                                atributos que identifican de manera unívoca cada ocurrencia de una entidad.</li>
+                            <li>Descriptores de entidad: son atributos que muestran unas características de la entidad.
+                            </li>
+                        </ul>
+                        <p>Siempre debe existir, al menos, un atributo identificativo.</p>
+                        <p>Ejemplos de atributos:</p>
+                        <figure>
+                            <p><img alt="Figura 4 - Atributos" src=res/atributos.webp>
+                            <figcaption>Figura 4 - Atributos</figcaption>
+                            </p>
+                        </figure>
+                        <h4 id=tipos-de-atributos>Tipos de atributos<a class=headerlink href=#tipos-de-atributos
+                                title="Permanent link">&para;</a></h4>
+                        <figure>
+                            <p><img alt="Figura 5 - Tipos de atributos" src=res/tipos_atributos.webp>
+                            <figcaption>Figura 5 - Tipos de atributos</figcaption>
+                            </p>
+                        </figure>
+                        <ul>
+                            <li><strong>Atributos identificadores o identificativos</strong>: Son atributos cuyos
+                                valores no se repiten dentro de una misma entidad o relación. Sirven para identificar de
+                                forma unívoca cada ocurrencia. Actúan como clave principal o primaria. Por ejemplo CCC
+                                (Código Cuenta Corriente) que identifica cada cuenta bancaria. O ISBN (International
+                                Standard Book Number) que identifica cada libro que se publica. Un atributo
+                                identificativo puede ser un atributo compuesto. Por ejemplo CCC podría descomponerse en
+                                3 atributos: num_banco, num_sucursal y num_cuenta.</li>
+                            <li><strong>Atributos discriminadores o discriminantes</strong>: Son atributos que
+                                discriminan distintas ocurrencias de una entidad débil en identificación dentro de la
+                                entidad fuerte de la que dependen. Lo representaremos con un círculo relleno de un color
+                                distinto a los atributos identificadores y descriptivos. Por ejemplo num_transacción
+                                dentro de una CCC o num_ejemplar dentro de un ISBN.</li>
+                            <li><strong>Atributos descriptores o descriptivos</strong>: Son los atributos que describen
+                                diversas propiedades de una entidad o relación (¡la relaciones también pueden tener
+                                atributos!). Son los más frecuentes.</li>
+                            <li><strong>Atributos derivados</strong>: Son atributos cuyos valores se calculan a partir
+                                de los valores de otros atributos. Por ejemplo podemos disponer de un atributo fecha_nac
+                                que sería un atributo descriptivo normal y calcular el valor del atributo edad a partir
+                                de él. El precio_total también podría calcularse a partir del precio + %iva.</li>
+                            <li><strong>Atributos multivaluados</strong>: Son atributos descriptores que poseen varios
+                                valores de un mismo dominio. Por ejemplo, si necesitamos almacenar varios e-mail de una
+                                misma persona entonces deberemos utilizar un atributo multivaluado. Igual sucede con el
+                                teléfono. Si sólo necesitamos almacenar un sólo valor utilizaremos un atributo
+                                descriptivo normal.</li>
+                            <li><strong>Atributos compuestos</strong>: Muchas veces se confunden con los anteriores,
+                                aunque no tienen nada que ver con ellos. Un atributo compuesto es un atributo que puede
+                                ser descompuesto en otros atributos pertenecientes a distintos dominios.</li>
+                        </ul>
+                        <h3 id=relaciones>Relaciones<a class=headerlink href=#relaciones
+                                title="Permanent link">&para;</a></h3>
+                        <p>Una relación es la asociación que existe entre dos a más entidades. Cada relación tiene un
+                            nombre que describe su función. Las relaciones se representan gráficamente mediante rombos y
+                            su nombre aparece en el interior. Normalmente le pondremos de nombre la primera o primeras
+                            letras de las entidades que relaciona. Las entidades que están involucradas en una
+                            determinada relación se denominan entidades participantes. El número de participantes en una
+                            relación es lo que se denomina grado de la relación. Por ejemplo la relación CLIENTE-COCHE
+                            es de grado 2 o binaria, ya que intervienen dos entidades.</p>
+                        <figure>
+                            <p><img alt="Figura 6 - Relaciones" src=res/relaciones_1.webp>
+                            <figcaption>Figura 6 - Relaciones</figcaption>
+                            </p>
+                        </figure>
+                        <p>Observa que el nombre que ponemos a la relación usa las primeras letras de cada entidad. En
+                            este caso como ambas empiezan por «C» se añade algunas letras más para hacer referencia a
+                            CLIENTES. También podríamos haber puesto como nombre de la relación uno más descriptivo de
+                            la misma, por ejemplo «Compra» (CLIENTE compra COCHE), pero esta nomenclatura puede conducir
+                            a confusión a la hora de determinar la cardinalidad de la relación cuando estamos
+                            aprendiendo. La relación PUBLICAR, es de grado 3, ya que involucra las entidades LIBRO,
+                            EDITORIAL y AUTOR.</p>
+                        <figure>
+                            <p><img alt="Figura 7 - Relaciones - Cardinalidad" src=res/relaciones_2.webp>
+                            <figcaption>Figura 7 - Relaciones - Cardinalidad</figcaption>
+                            </p>
+                        </figure>
+                        <p>Cuando una entidad está relacionada consigo misma, hablamos de relación reflexiva.</p>
+                        <figure>
+                            <p><img alt="Figura 8 - Relaciones reflexivas" src=res/relaciones_3.webp>
+                            <figcaption>Figura 8 - Relaciones reflexivas</figcaption>
+                            </p>
+                        </figure>
+                        <p>Aunque el modelo E-R permite relaciones de cualquier grado, la mayoría de las aplicaciones
+                            del modelo sólo consideran relaciones del grado 2.</p>
+                        <h4 id=rol-de-una-entidad-en-una-relacion>Rol de una entidad en una relación<a class=headerlink
+                                href=#rol-de-una-entidad-en-una-relacion title="Permanent link">&para;</a></h4>
+                        <p>Es la función que tiene en una relación. Se especifican los papeles o roles cuando se quiera
+                            aclarar el significado de una entidad en una relación. A continuación mostramos los mismos
+                            ejemplos del punto anterior pero incluyendo el papel o rol de cada entidad en las
+                            relaciones:</p>
+                        <figure>
+                            <p><img alt="Figura 9 - Rol de una entidad en una relación" src=res/rol_entidad.webp>
+                            <figcaption>Figura 9 - Rol de una entidad en una relación</figcaption>
+                            </p>
+                        </figure>
+                        <h4 id=cardinalidad-de-una-relacion>Cardinalidad de una relación<a class=headerlink
+                                href=#cardinalidad-de-una-relacion title="Permanent link">&para;</a></h4>
+                        <p>Cuando la relación es binaria, cosa que ocurre en la mayoría de los casos, la cardinalidad es
+                            el número de ocurrencias de una entidad asociadas a una ocurrencia de la otra entidad.
+                            Existen principalmente tres tipos de cardinalidades binarias:</p>
+                        <h5 id=relacion-uno-a-uno-11>Relación uno a uno 1:1<a class=headerlink
+                                href=#relacion-uno-a-uno-11 title="Permanent link">&para;</a></h5>
+                        <p>A cada elemento de la primera entidad le corresponde no más de un elemento de la segunda
+                            entidad, y a la inversa.Es representado gráficamente de la siguiente manera:</p>
+                        <figure>
+                            <p><img alt="Figura 10 - Relación 1:1" src=res/relacion_1_1.webp>
+                            <figcaption>Figura 10 - Relación 1:1</figcaption>
+                            </p>
+                        </figure>
+                        <p>Ejemplo cardinalidad 1:1</p>
+                        <figure>
+                            <p><img alt="Figura 11 - Ejemplo de Relación 1:1" src=res/ejemplo_relacion_1_1.webp>
+                            <figcaption>Figura 11 - Ejemplo de Relación 1:1</figcaption>
+                            </p>
+                        </figure>
+                        <h5 id=relacion-uno-a-muchos-1n>Relación uno a muchos 1:N<a class=headerlink
+                                href=#relacion-uno-a-muchos-1n title="Permanent link">&para;</a></h5>
+                        <p>Significa que cada elemento de una entidad del tipo A puede relacionarse con cualquier
+                            cantidad de elementos de una entidad del tipo B, y un elemento de una entidad del tipo B
+                            solo puede estar relacionado con un elemento de una entidad del tipo A. Su representación
+                            gráfica es la siguiente: Nótese en este caso que el extremo punteado de la flecha de la
+                            relación de A y B, indica un elemento de A conectado a muchos de B.</p>
+                        <figure>
+                            <p><img alt="Figura 12 - Relación 1:N" src=res/relacion_1_n.webp>
+                            <figcaption>Figura 12 - Relación 1:N</figcaption>
+                            </p>
+                        </figure>
+                        <p>Ejemplo cardinalidad 1:N</p>
+                        <figure>
+                            <p><img alt="Figura 12 - Ejemplo de Relación 1:N" src=res/ejemplo_relacion_1_n.webp>
+                            <figcaption>Figura 12 - Ejemplo de Relación 1:N</figcaption>
+                            </p>
+                        </figure>
+                        <h6 id=muchos-a-muchos-nm>Muchos a muchos N:M<a class=headerlink href=#muchos-a-muchos-nm
+                                title="Permanent link">&para;</a></h6>
+                        <p>Establece que cualquier cantidad de elementos de una entidad del tipo A pueden estar
+                            relacionados con cualquier cantidad de elementos de una entidad del tipo B. El extremo de la
+                            flecha que se encuentra punteada indica el «varios» de la relación.</p>
+                        <figure>
+                            <p><img alt="Figura 13 - Relación N:M" src=res/relacion_n_m.webp width=300></p>
+                            <figcaption>Figura 13 - Relación N:M</figcaption>
+                        </figure>
+                        <p>Ejemplo cardinalidad N:M:</p>
+                        <figure>
+                            <p><img alt="Figura 14 - Ejemplo de Relación N:M" src=res/ejemplo_relacion_n_m.webp>
+                            <figcaption>Figura 14 - Ejemplo de Relación N:M</figcaption>
+                            </p>
+                        </figure>
+                        <h4 id=la-participacion-de-una-entidad>La Participación de una entidad<a class=headerlink
+                                href=#la-participacion-de-una-entidad title="Permanent link">&para;</a></h4>
+                        <p>La participación de una entidad también se conoce como cardinalidad de la entidad dentro de
+                            una relación. Una misma entidad puede tener distinta cardinalidad dentro de distintas
+                            relaciones. Para obtener la participación, se debe fijar una ocurrencia concreta de una
+                            entidad y averiguar cuántas ocurrencias de la otra entidad le corresponden como mínimo y
+                            como máximo. Después realizar lo mismo en el otro sentido. Estas ocurrencias mínimas y
+                            máximas (llamadas también participación de una entidad) se representarán entre paréntesis y
+                            con letras minúsculas en el lado de la relación opuesto a la entidad cuyas ocurrencias se
+                            fijan. Para determinar la cardinalidad nos quedamos con las participaciones máximas de ambas
+                            y se representan con letras mayúsculas separadas por dos puntos junto al símbolo de la
+                            relación. Veamos algunos ejemplos:</p>
+                        <p>Ejemplo 1:</p>
+                        <figure>
+                            <p><img alt="Figura 15 - Participación de una entidad Ejemplo 1"
+                                    src=res/participacion_ejemplo_1.webp>
+                            <figcaption>Figura 15 - Participación de una entidad Ejemplo 1</figcaption>
+                            </p>
+                        </figure>
+                        <p>Un conductor «conduce» como mínimo 1 coche y como máximo 1 coche → Participación (1,1) y se
+                            pone en el lado opuesto a CONDUCTOR, es decir, junto a COCHE. Un coche «es conducido» como
+                            mínimo por 1 conductor y como máximo por 1 conductor → Participación (1,1) y se pone en el
+                            lado opuesto a COCHE, es decir, junto a CONDUCTOR. Para determinar la cardinalidad nos
+                            quedamos con las dos participaciones máximas. Es decir → 1:1.</p>
+                        <p>Ejemplo 2:</p>
+                        <figure>
+                            <p><img alt="Figura 16 - Participación de una entidad Ejemplo 2"
+                                    src=res/participacion_ejemplo_2.webp>
+                            <figcaption>Figura 16 - Participación de una entidad Ejemplo 2</figcaption>
+                            </p>
+                        </figure>
+                        <p>Un cliente «compra» como mínimo 1 coche y como máximo puede comprar más de un coche, es
+                            decir, varios coches. Ese varios se representa con la letra «n» → Participación (1,n)) y se
+                            pone en el lado opuesto a CLIENTE, es decir, junto a COCHE. Un coche «es comprado» como
+                            mínimo por 1 cliente y como máximo por 1 cliente → Participación (1,1) y se pone en el lado
+                            opuesto a COCHE, es decir, junto a CLIENTE. Para determinar la cardinalidad nos quedamos con
+                            las dos participaciones máximas y la «n» se pone en mayúsculas «N». Es decir → 1:N.</p>
+                        <p>Ejemplo 3:</p>
+                        <figure>
+                            <p><img alt="Figura 17 - Participación de una entidad Ejemplo 3"
+                                    src=res/participacion_ejemplo_3.webp>
+                            <figcaption>Figura 17 - Participación de una entidad Ejemplo 3</figcaption>
+                            </p>
+                        </figure>
+                        <p>Un empleado «trabaja» como mínimo 1 departamento y como máximo puede trabajar en varios. Ese
+                            varios se representa con la letra «n» → Participación(1,n)) y se pone en el lado opuesto a
+                            EMPLEADO, es decir, junto a DEPARTAMENTO. Un departamento «tiene» como mínimo por 1 empleado
+                            y como máximo puede tener varios → Participación (1,n) y se pone en el lado opuesto a
+                            DEPARTAMENTO, es decir, junto a EMPLEADO. Para determinar la cardinalidad nos quedamos con
+                            las dos participaciones máximas y la «n» se pone en mayúsculas «N» y para diferenciar el
+                            otro «varios» en lugar de «N» ponemos «M» (Igual que cuando en matemáticas había dos
+                            variables no se ponía x e x sino x e y). Es decir → N:M.</p>
+                        <h4 id=atributos-propios-de-una-relacion>Atributos propios de una relación<a class=headerlink
+                                href=#atributos-propios-de-una-relacion title="Permanent link">&para;</a></h4>
+                        <p>Las relaciones también pueden tener atributos, se les denominan atributos propios. Son
+                            aquellos atributos cuyo valor sólo se puede obtener en la relación, puesto que dependen de
+                            todas las entidades que participan en la relación. Veamos un ejemplo.</p>
+                        <p>Ejemplo:</p>
+                        <figure>
+                            <p><img alt="Figura 18 - Atributos de una relación" src=res/atributos_relacion.webp>
+                            <figcaption>Figura 18 - Atributos de una relación</figcaption>
+                            </p>
+                        </figure>
+                        <p>Tenemos la relación «Compra» entre cliente y producto. Así un cliente puede comprar uno o
+                            varios productos, y un producto puede ser comprado por uno o varios clientes. Encontramos
+                            una serie de atributos propios de cada una de las entidades [CLIENTE (Cod_Cliente, Nombre,
+                            Dirección, edad, teléfono) y PRODUCTO (Cod_Producto, Nombre, Descripción, Precio_Unidad)],
+                            pero también podemos observar como el atributo «Cantidad» es un atributo de la relación.
+                            ¿Por qué? Pues porque un mismo cliente puede comprar distintas cantidades de distintos
+                            productos y un mismo producto puede ser comprado en distintas cantidades por distintos
+                            clientes. Es decir el atributo cantidad depende del cliente y del producto de que se traten.
+                        </p>
+                        <h4 id=relaciones-de-dependencia-entidades-fuertes-y-entidades-debiles>Relaciones de
+                            dependencia: Entidades Fuertes y Entidades Débiles<a class=headerlink
+                                href=#relaciones-de-dependencia-entidades-fuertes-y-entidades-debiles
+                                title="Permanent link">&para;</a></h4>
+                        <p>Al definir las entidades hablamos de dos tipos de ellas: fuertes y débiles. Una entidad débil
+                            está unida a una entidad fuerte a través de una relación de dependencia. Hay dos tipos de
+                            relaciones de dependencia:</p>
+                        <p><strong>Dependencia en existencia</strong> Se produce cuando una entidad débil necesita de la
+                            presencia de una fuerte para existir. Si desaparece la existencia de la entidad fuerte, la
+                            de la débil carece de sentido. Se representa con una barra atravesando el rombo y la letra E
+                            en su interior. Son relaciones poco frecuentes.</p>
+                        <p>Ejemplo:</p>
+                        <figure>
+                            <p><img alt="Figura 19 - Dependencia en existencia" src=res/dependencia_existencia.webp>
+                            <figcaption>Figura 19 - Dependencia en existencia</figcaption>
+                            </p>
+                        </figure>
+                        <p>En la figura se muestra el caso de que un empleado puede tener ninguno, uno o varios hijos,
+                            por lo que los datos de los hijos deben sacarse en una entidad aparte, aunque siguen siendo
+                            datos propios de un empleado. Si se eliminase un registro de un empleado, no tendría sentido
+                            seguir manteniendo en la base datos la información sobre sus hijos.</p>
+                        <p><strong>Dependencia en identificación</strong> Se produce cuando una entidad débil necesita
+                            de la fuerte para identificarse. Por sí sola la débil no es capaz de identificar de manera
+                            unívoca sus ocurrencias. La clave de la entidad débil se forma al unir la clave de la
+                            entidad fuerte con los atributos identificadores de la entidad débil.</p>
+                        <p>Ejemplo:</p>
+                        <figure>
+                            <p><img alt="Figura 20 - Dependencia en identificación"
+                                    src=res/dependencia_identificacion.webp>
+                            <figcaption>Figura 20 - Dependencia en identificación</figcaption>
+                            </p>
+                        </figure>
+                        <p>En la figura se observa que la provincia tiene uno o varios municipio y que un municipio
+                            pertenece a una sola provincia. Ahora bien si lo que identifica a los municipios es el
+                            código que aparece en el código postal, se tiene que las dos primeras cifras corresponden al
+                            código de la provincia y las tres últimas al del municipio. Por ejemplo, el C.P de Écija es
+                            41400, dónde 41 es el código de la provincia y 400 el del municipio. De esta forma, habrá
+                            distintos municipios con código 400 en distintas provincias. Uno de estos municipios se
+                            distinguirá del resto al anteponerle las dos primeras cifras correspondientes al código de
+                            la provincial.</p>
+                        <h4 id=simbolos-de-exclusividad-o-inclusividad-entre-relaciones>Símbolos de exclusividad o
+                            inclusividad entre relaciones<a class=headerlink
+                                href=#simbolos-de-exclusividad-o-inclusividad-entre-relaciones
+                                title="Permanent link">&para;</a></h4>
+                        <p>Otros símbolos usados en el modelo E/R son los siguientes:</p>
+                        <p><strong>Restricción de exclusividad</strong> entre dos tipos de relaciones R1 y R2 respecto a
+                            la entidad E1. Significa que E1 está relacionada, o bien con E2 o bien con E3, pero no
+                            pueden darse ambas relaciones simultáneamente.</p>
+                        <figure>
+                            <p><img alt="Figura 21 - Restricción de exclusividad" src=res/restriccion_exclusividad.webp>
+                            <figcaption>Figura 21 - Restricción de exclusividad</figcaption>
+                            </p>
+                        </figure>
+                        <p>Ejemplo: Un empleado puede estar en una empresa, o bien realizando prácticas, en cuyo caso
+                            está asignado a un grupo de prácticas y no pertenece a ningún departamento en concreto. O
+                            bien puede ser empleado en plantilla y en este caso pertenece a un departamento.</p>
+                        <figure>
+                            <p><img alt="Figura 22 - Ejemplo de Restricción de exclusividad"
+                                    src=res/ejemplo_restriccion_exclusividad.webp>
+                            <figcaption>Figura 22 - Ejemplo de Restricción de exclusividad</figcaption>
+                            </p>
+                        </figure>
+                        <p><strong>Restricción de inclusividad</strong> entre dos tipos de relaciones R1 y R2 respecto a
+                            la entidad E1. Para que la entidad E1 participe en la relación R2 debe participar
+                            previamente en la relación R1.</p>
+                        <figure>
+                            <p><img alt="Figura 23 - Restricción de inclusividad" src=res/restriccion_inclusividad.webp>
+                            <figcaption>Figura 23 - Restricción de inclusividad</figcaption>
+                            </p>
+                        </figure>
+                        <p>Ejemplo: Para que un empleado pueda trabajar como diseñador de productos debe haber asistido,
+                            al menos, a dos cursos.</p>
+                        <figure>
+                            <p><img alt="Figura 24 - Ejemplo de Restricción de inclusividad"
+                                    src=res/ejemplo_restriccion_inclusividad.webp>
+                            <figcaption>Figura 24 - Ejemplo de Restricción de inclusividad</figcaption>
+                            </p>
+                        </figure>
+                        <p><strong>Restricción de exclusión</strong> entre dos tipos de relaciones R1 y R2. Significa
+                            que E1 está relacionada con E2 bien mediante R1, o bien mediante R2 pero que no pueden darse
+                            ambas relaciones simultáneamente.</p>
+                        <figure>
+                            <p><img alt="Figura 25 - Restricción de exclusión" src=res/restriccion_exclusion.webp>
+                            <figcaption>Figura 25 - Restricción de exclusión</figcaption>
+                            </p>
+                        </figure>
+                        <p>Ejemplo: Los empleados, en función de sus capacidades, o son diseñadores de productos o son
+                            operarios y los fabrican, no es posible que ningún empleado sea diseñador y fabricante a la
+                            misma vez.</p>
+                        <figure>
+                            <p><img alt="Figura 26 - Ejemplo de Restricción de exclusión"
+                                    src=res/ejemplo_restriccion_exclusion.webp>
+                            <figcaption>Figura 26 - Ejemplo de Restricción de exclusión</figcaption>
+                            </p>
+                        </figure>
+                        <p><strong>Restricción de inclusión</strong> entre dos tipos de relaciones R1 y R2. Para que la
+                            entidad E1 participe en la relación R2 con E2 debe participar previamente en la relación R1.
+                        </p>
+                        <figure>
+                            <p><img alt="Figura 27 - Restricción de inclusión" src=res/restriccion_inclusion.webp>
+                            <figcaption>Figura 27 - Restricción de inclusión</figcaption>
+                            </p>
+                        </figure>
+                        <p>Ejemplo: Para que un hombre se divorcie de una mujer, previamente ha de haberse casado con
+                            ella.</p>
+                        <figure>
+                            <p><img alt="Figura 28 - Ejemplo de Restricción de inclusión"
+                                    src=res/ejemplo_restriccion_inclusion.webp>
+                            <figcaption>Figura 28 - Ejemplo de Restricción de inclusión</figcaption>
+                            </p>
+                        </figure>
+                    </article>
+                </div>
+            </div> <a href=# class="md-top md-icon" data-md-component=top hidden> <svg xmlns=http://www.w3.org/2000/svg
+                    viewbox="0 0 24 24">
+                    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z" />
+                </svg> Back to top </a>
+        </main>
+        <footer class=md-footer>
+            <nav class="md-footer__inner md-grid" aria-label=Footer> <a href=../tema_1/
+                    class="md-footer__link md-footer__link--prev" aria-label="Previous: Tema 1" rel=prev>
+                    <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+                            <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z" />
+                        </svg> </div>
+                    <div class=md-footer__title>
+                        <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> Tema 1 </div>
+                    </div>
+                </a> </nav>
+            <div class="md-footer-meta md-typeset">
+                <div class="md-footer-meta__inner md-grid">
+                    <div class=md-copyright>
+                        <div class=md-copyright__highlight> Copyright &copy; 2022 - 2023 irubenboy </div> Made with <a
+                            href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for
+                            MkDocs </a>
+                    </div>
+                    <div class=md-social> <a href=https://github.com/squidfunk target=_blank rel=noopener
+                            title=github.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg
+                                viewbox="0 0 496 512"><!-- Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                <path
+                                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                            </svg> </a> <a href=https://gitter.im/squidfunk/mkdocs-material target=_blank rel=noopener
+                            title=gitter.im class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg
+                                viewbox="0 0 384 512"><!-- Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                <path
+                                    d="M66.4 322.5H16V0h50.4v322.5zM166.9 76.1h-50.4V512h50.4V76.1zm100.6 0h-50.4V512h50.4V76.1zM368 76h-50.4v247H368V76z" />
+                            </svg> </a> <a href=https://hub.docker.com/r/squidfunk/mkdocs-material/ target=_blank
+                            rel=noopener title=hub.docker.com class=md-social__link> <svg
+                                xmlns=http://www.w3.org/2000/svg
+                                viewbox="0 0 640 512"><!-- Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                <path
+                                    d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z" />
+                            </svg> </a> <a href=https://pypi.org/project/mkdocs-material/ target=_blank rel=noopener
+                            title=pypi.org class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg
+                                viewbox="0 0 448 512"><!-- Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                <path
+                                    d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z" />
+                            </svg> </a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener
+                            title=twitter.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg
+                                viewbox="0 0 512 512"><!-- Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                <path
+                                    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                            </svg> </a> </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class=md-dialog data-md-component=dialog>
+        <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id=__config
+        type=application/json>{"base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "toc.integrate"], "search": "../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script src=../assets/javascripts/bundle.a00a7c5e.min.js></script>
+</body>
+
+</html>
