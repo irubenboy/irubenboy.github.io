@@ -2,57 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://irubenboy.github.io/java/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_i/tema_1/page-1/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_ii/tema_10/page-1/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_ii/tema_10/page-2/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_ii/tema_10/page-3/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_iii/tema_11/page-1/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_iii/tema_11/page-2/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_iii/tema_11/page-3/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://irubenboy.github.io/java/bloque_iii/tema_11/page-4/</loc>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/bloque_iii/tema_11/page-7/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/proyects/cinema/proyecto_v1/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://irubenboy.github.io/java/proyects/cinema/proyecto_v2/</loc>
-         <lastmod>2023-02-21</lastmod>
+         <lastmod>2023-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
