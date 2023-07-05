@@ -95,3 +95,11 @@ strong {
     list-style-image: none;
     list-style-type: circle;
 }
+
+.md-typeset .tabbed-set {
+    border: 1px solid var(--md-primary-fg-color);
+}
+
+.md-typeset .tabbed-block {
+    padding: 8px;
+}
