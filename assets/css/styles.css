@@ -1,78 +1,76 @@
-*{
+/* Reset some default styles and provide a clean slate */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.title{
-    text-align: center;
-    color: aquamarine;
-    margin: 24px 0;
-    font-size: 4em;
+/* Apply a simple, elegant font to the entire page */
+body {
+    font-family: 'Arial', sans-serif;
 }
 
-.cards-container{
-    width: 100%;
+/* Add a subtle background color and center content */
+html,
+body {
+    height: 100%;
+    background-color: #f0f0f0;
 }
 
-.card-container{
-    max-width: 400px;
-    width: 25%;
-    height: 250px;
-    margin: 8px 16px;
-    border-radius: 15px;
-    position: relative;
+/* Style links with a different color and remove underlines */
+a {
+    text-decoration: none;
+    color: #007bff;
 }
 
-.card-image{
-    position: absolute;
-    max-width: 100px;
-    top: 0px;
-    margin: 10px;
-    width: 45%;
+
+/* Style buttons with a modern look */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color .3s;
 }
 
-.card-title{
-    bottom: 0;
-    position: absolute;
-    right: 0;
-    margin: 10px;
-    color: white;
-    font-size: 3rem;
+button:hover {
+    background-color: #0056b3;
 }
 
-#html{
-    background-color: #f07654;
+/* Add responsive design for mobile devices */
+@media(max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 16px;
+    }
 }
 
-#css{
-    background-color: #4c98c4;
+.highlight {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
 }
 
-#javascript{
-    background-color: #f9d856;
+header,
+main,
+footer {
+    width: 100vw;
 }
 
-#javascript img{
-    border-radius: 15px;
+header {
+    height: 7%;
+    background-color: aqua;
 }
 
-#php{
-    background-color: #7276AA;
+main {
+    height: 90%;
+    background-color: yellow;
 }
 
-#java{
-    background-color: #d55c3e;
-}
-
-#sql{
-    background-color: grey;
-}
-
-#dart{
-    background-color: #526cfe;
-}
-
-#nodejs{
-    background-color: #3DA331;
+footer {
+    height: 3%;
+    background-color: red;
 }
