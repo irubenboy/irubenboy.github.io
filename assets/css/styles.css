@@ -1,76 +1,86 @@
-/* Reset some default styles and provide a clean slate */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Apply a simple, elegant font to the entire page */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/* Add a subtle background color and center content */
-html,
-body {
-    height: 100%;
-    background-color: #f0f0f0;
+.title {
+    text-align: center;
+    color: aquamarine;
+    margin: 24px 0;
+    font-size: 15px;
 }
 
-/* Style links with a different color and remove underlines */
-a {
-    text-decoration: none;
-    color: #007bff;
+.cards-container {
+    width: 100%;
 }
 
-
-/* Style buttons with a modern look */
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color .3s;
+.card-container {
+    max-width: 400px;
+    width: 25%;
+    height: 250px;
+    margin: 8px 16px;
+    border-radius: 15px;
+    position: relative;
 }
 
-button:hover {
-    background-color: #0056b3;
+.card-image {
+    position: absolute;
+    max-width: 100px;
+    top: 0px;
+    margin: 10px;
+    width: 45%;
 }
 
-/* Add responsive design for mobile devices */
-@media(max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    button {
-        padding: 8px 16px;
-    }
+.card-title {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    color: white;
+    font-size: 3rem;
 }
 
-.highlight {
-    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+#html {
+    background-color: #f07654;
 }
 
-header,
-main,
-footer {
-    width: 100vw;
+#css {
+    background-color: #4c98c4;
 }
 
-header {
-    height: 7%;
-    background-color: aqua;
+#javascript {
+    background-color: #f9d856;
 }
 
-main {
-    height: 90%;
-    background-color: yellow;
+#javascript img {
+    border-radius: 15px;
 }
 
-footer {
-    height: 3%;
-    background-color: red;
+#php {
+    background-color: #7276AA;
+}
+
+#java {
+    background-color: #d55c3e;
+}
+
+#sql {
+    background-color: grey;
+}
+
+#dart {
+    background-color: #526cfe;
+}
+
+#nodejs {
+    background-color: #3DA331;
+}
+
+#react {
+    background-color: #afeeff;
 }
