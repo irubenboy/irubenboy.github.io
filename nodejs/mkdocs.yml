@@ -1,0 +1,147 @@
+# Project information
+site_name: Node JS
+site_url: https://irubenboy.github.io/node/
+site_author: irubenboy
+site_description: A page with notes about Node Js
+
+# Repository
+repo_name: irubenboy/java
+repo_url: https://github.com/irubenboy/node
+
+# Copyright
+copyright: Copyright &copy; 2022 - 2023 irubenboy
+
+nav:
+  - Tema 1 - Introducción a Node JS:
+      - tema_1/page-1.md
+      - tema_1/page-2.md
+      - tema_1/page-3.md
+      - tema_1/page-4.md
+      - tema_1/page-5.md
+      - tema_1/page-6.md
+  - Tema 2 - HTTP Server:
+      - tema_2/page-1.md
+      - tema_2/page-2.md
+      - tema_2/page-3.md
+      - tema_2/page-4.md
+  - Tema 3 - Express:
+      - tema_3/page-1.md
+      - tema_3/page-2.md
+      - tema_3/page-3.md
+      - tema_3/page-4.md
+      - tema_3/page-5.md
+
+# Configuration
+theme:
+  name: material
+  #custom_dir: material/.overrides
+  features:
+    # - announce.dismiss # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#mark-as-read
+    # - content.action.edit # Botón editar esta página
+    # - content.action.view # Botón ver fuente
+    - content.code.annotate # Permite poner anotaciones en el bloque de código
+    - content.code.copy # Permite copiar códigos
+    # - content.tabs.link
+    - content.tooltips # Añade tooltips
+    # - header.autohide # Oculta el header al hacer scroll
+    # - navigation.expand # Expande de la subsections de forma automática
+    - navigation.footer # Añade los botones de siguiente/anterior página en el footer
+    # - navigation.indexes # La sección se une a la página
+    # - navigation.instant # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading
+    # - navigation.prune # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-pruning
+    # - navigation.sections # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-sections
+    - navigation.tabs # Secciones en formato tabs
+    # - navigation.tabs.sticky # Se mantienen fijadas durante el scroll
+    - navigation.top # Muestra un botón de volver al top al hacer scroll
+    - navigation.tracking # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-tracking
+    - search.highlight # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-highlighting
+    - search.share # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-sharing
+    - search.suggest # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions
+    - toc.follow # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-following
+    - toc.integrate # Integra el TOC en el indice
+  palette:
+    - scheme: default
+      # primary: deep purple
+      # accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      # primary: indigo
+      # accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  #favicon: assets/favicon.png
+  logo: assets/icon.png
+  favicon: assets/icon.png
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+
+# Customization
+extra_css:
+  - extra/extra.css
+extra:
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/squidfunk
+    - icon: fontawesome/brands/gitter
+      link: https://gitter.im/squidfunk/mkdocs-material
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/squidfunk/mkdocs-material/
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/mkdocs-material/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/squidfunk
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
