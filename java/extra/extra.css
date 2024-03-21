@@ -103,3 +103,15 @@ strong {
 .md-typeset .tabbed-block {
     padding: 8px;
 }
+
+body {
+    text-align: justify;
+}
+
+::selection {
+    text-decoration: underline var(--md-primary-fg-color) 4px;
+}
+
+.md-nav__list {
+    text-align: left;
+}
