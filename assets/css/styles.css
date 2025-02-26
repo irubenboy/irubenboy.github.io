@@ -5,86 +5,79 @@
 }
 
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Console', Monaco, monospace;
+    background-color: #333;
 }
 
 .title {
     text-align: center;
-    color: aquamarine;
+    color: #fff;
     margin: 24px 0;
-    font-size: 15px;
+    font-size: 2rem;
+    font-weight: 500;
+
+    & span{
+        text-transform: uppercase;
+    }
 }
 
 .cards-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .card-container {
     max-width: 400px;
-    width: 25%;
-    height: 250px;
+    width: 50%;
     margin: 8px 16px;
     border-radius: 15px;
-    position: relative;
+    padding: 16px;
+
+    color: white;
+    text-decoration: none;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 3px solid var(--main-color);
+    
+    &:hover{
+        background-color: var(--main-bg);
+    }
 }
 
 .card-image {
-    position: absolute;
-    max-width: 100px;
-    top: 0px;
-    margin: 10px;
-    width: 45%;
+    width: 75px;
 }
 
 .card-title {
-    bottom: 0;
-    position: absolute;
-    right: 0;
-    margin: 10px;
+    font-size: 1.75rem;
+
+    & img{
+        border-radius: 15px;
+    }
+}
+
+.input-container{
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+.input-container input{
+    padding: 8px 24px;
+    border-radius: 50px;
+    width: 60%;
+    font-size: 1.5rem;
+
+    background-color: transparent;
     color: white;
-    font-size: 3rem;
-}
+    border: 3px solid;
 
-#html {
-    background-color: #f07654;
-}
-
-#css {
-    background-color: #4c98c4;
-}
-
-#javascript {
-    background-color: #f9d856;
-}
-
-#javascript img {
-    border-radius: 15px;
-}
-
-#php {
-    background-color: #7276AA;
-}
-
-#java {
-    background-color: #d55c3e;
-}
-
-#sql {
-    background-color: grey;
-}
-
-#dart {
-    background-color: #526cfe;
-}
-
-#nodejs {
-    background-color: #3DA331;
-}
-
-#react {
-    background-color: #afeeff;
-}
-
-#android {
-    background-color: #2EDF8550;
+    &:focus{
+        outline: none;
+    }
 }
