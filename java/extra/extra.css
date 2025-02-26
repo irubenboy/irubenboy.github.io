@@ -7,7 +7,9 @@
     --md-accent-fg-color: rgb(238, 132, 135);
     --list-level-1: url('level_1.svg');
     --list-level-2: url('level_2.svg');
+    --md-admonition-icon--question: url('../assets/zoom-question.svg')
 }
+
 
 [data-md-color-scheme="slate"] {
     --md-primary-fg-color: #882309;
@@ -114,4 +116,51 @@ body {
 
 .md-nav__list {
     text-align: left;
+}
+
+/* Modified admonition */
+
+.md-typeset .admonition.question,
+.md-typeset details.question {
+  border-color: rgb(43, 155, 70);
+}
+.md-typeset .question > .admonition-title,
+.md-typeset .question > summary {
+  background-color: rgba(43, 155, 70, 0.1);
+}
+.md-typeset .question > .admonition-title::before,
+.md-typeset .question > summary::before {
+  background-color: rgb(43, 155, 70);
+  -webkit-mask-image: var(--md-admonition-icon--question);
+          mask-image: var(--md-admonition-icon--question);
+}
+
+.md-typeset .admonition.hard-question,
+.md-typeset details.hard-question {
+  border-color: rgb(155, 43, 43);
+}
+.md-typeset .hard-question > .admonition-title,
+.md-typeset .hard-question > summary {
+  background-color: rgba(155, 43, 43, 0.1);
+}
+.md-typeset .hard-question > .admonition-title::before,
+.md-typeset .hard-question > summary::before {
+  background-color: rgb(155, 43, 43);
+  -webkit-mask-image: var(--md-admonition-icon--question);
+          mask-image: var(--md-admonition-icon--question);
+}
+
+.md-typeset .admonition.medium-question,
+.md-typeset details.medium-question {
+  border-color: rgb(60, 43, 155);
+}
+.md-typeset .medium-question > .admonition-title,
+.md-typeset .medium-question > summary {
+  background-color: rgba(60, 43, 155, 0.1);
+}
+.md-typeset .medium-question > .admonition-title::before,
+.md-typeset .medium-question > summary::before {
+  background-color: rgb(60, 43, 155);
+  -webkit-mask-image: var(--md-admonition-icon--question);
+          mask-image: var(--md-admonition-icon--question);
 }
